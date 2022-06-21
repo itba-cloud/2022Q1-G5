@@ -1,0 +1,16 @@
+
+.terraform/
+
+*.tfstate
+
+.terraform.lock.hcl
+
+terraform.tfstate.backup
+
+.DS_Store
+
+resources/mylayer/
+
+*.info
+
+*.code-workspace
