@@ -26,3 +26,6 @@ $terraform apply
 # Lambda
 
 Para ejecutar el lambda se debe enviar un json en el body con un key "title" con el cual se guardara el archivo dentro de s3 y dynamo
+
+# Architecture
+![architecture diagram]('./diagram.png')

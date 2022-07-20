@@ -4,8 +4,8 @@
 
 resource "aws_api_gateway_rest_api" "this" {
 
-  name        = "PodcastAPIGateway"
-  description = "API Gateway for Podcasts"
+  name        = var.name
+  description = var.description
 }
 
 resource "aws_api_gateway_resource" "this" {
@@ -31,6 +31,16 @@ resource "aws_api_gateway_integration" "this" {
   integration_http_method = "POST"
   type                    = "AWS_PROXY"
   uri                     = var.invoke_arn
+}
+
+resource "aws_api_gateway_integration" "subscribe" {
+
+  rest_api_id             = aws_api_gateway_rest_api.this.id
+  resource_id             = aws_api_gateway_resource.this.id
+  http_method             = aws_api_gateway_method.this.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = var.subs_invoke_arn
 }
 
 resource "aws_api_gateway_deployment" "this" {
